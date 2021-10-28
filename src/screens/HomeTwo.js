@@ -19,9 +19,9 @@ import {
 } from 'react-native-chart-kit';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
 
-export default function Home(props) {
-/*   const [backgroundGradientFrom, setBackgroundGradientFrom] =
-    useState('#fb8c00'); */
+export default function Home() {
+  const [backgroundGradientFrom, setBackgroundGradientFrom] =
+    useState('#fb8c00');
   const [backgroundGradientTo, setBackgroundGradientTo] = useState('#fb8c00');
   const [stroke, setStroke] = useState('black');
   const [fill, setFill] = useState('red');
@@ -34,9 +34,10 @@ export default function Home(props) {
 
   const opacityHandler = () => {
     return setOpacity(Number(enteredValue));
-  
   };
-  
+  const editHandler = () => {
+    return setEdit(!edit);
+  };
   const data = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June'],
     datasets: [
@@ -52,10 +53,8 @@ export default function Home(props) {
       },
     ],
   };
-  
   return (
     <ScrollView>
-     
       <LineChart
         data={data}
         width={Dimensions.get('window').width} // from react-native
@@ -64,33 +63,33 @@ export default function Home(props) {
         yAxisSuffix="k"
         yAxisInterval={1} // optional, defaults to 1
         chartConfig={{
-          backgroundGradientFrom: props.data.backgroundGradientFrom,
-          backgroundGradientTo: props.data.backgroundGradientTo,
+          backgroundGradientFrom: backgroundGradientFrom,
+          backgroundGradientTo: backgroundGradientTo,
           decimalPlaces: 2, // optional, defaults to 2dp
-          color: () => props.data.graphLine,
-          labelColor: () => props.data.labelColor,
+          color: () => graphLineColor,
+          labelColor: () => labelColor,
           propsForDots: {
             r: '6',
-            strokeWidth: props.data.dotStrokeWidth,
-            stroke: props.data.dotStroke,
-            fill: props.data.dotFill,
+            strokeWidth: strokeWidth,
+            stroke: stroke,
+            fill: fill,
           },
         }}
         bezier
         style={{
           borderRadius: 16,
-          opacity: props.data.graphOpacity,
+          opacity: opacity,
         }}
       />
 
-      {props.visible &&
+      {
        <View>
         <View>
         <View style={styles.inputPicker}>
           <View>
             <Text>GradientFrom:</Text>
             <ColorPicker
-              onColorSelected={color => props.gradientFromHandler(color)}
+              onColorSelected={color => setBackgroundGradientFrom(color)}
               hideSliders={true}
               style={{width: 125, height: 125}}
             />
@@ -98,7 +97,7 @@ export default function Home(props) {
           <View>
             <Text>GradientTo:</Text>
             <ColorPicker
-              onColorSelected={color => props.gradientoHandler(color)}
+              onColorSelected={color => setBackgroundGradientTo(color)}
               hideSliders={true}
               style={{width: 125, height: 125}}
             />
@@ -106,7 +105,7 @@ export default function Home(props) {
           <View>
             <Text>DotStroke:</Text>
             <ColorPicker
-              onColorSelected={color => props.dotStrokeHandler(color)}
+              onColorSelected={color => setStroke(color)}
               hideSliders={true}
               style={{width: 125, height: 125}}
             />
@@ -116,7 +115,7 @@ export default function Home(props) {
         <View>
             <Text>DotFill:</Text>
             <ColorPicker
-              onColorSelected={color => props.dotFillHandler(color)}
+              onColorSelected={color => setFill(color)}
               hideSliders={true}
               style={{width: 125, height: 125}}
             />
@@ -124,7 +123,7 @@ export default function Home(props) {
           <View>
             <Text>GraphLine:</Text>
             <ColorPicker
-              onColorSelected={color => props.graphLineHandler(color)}
+              onColorSelected={color => setGraphLine(color)}
               hideSliders={true}
               style={{width: 125, height: 125}}
             />
@@ -132,7 +131,7 @@ export default function Home(props) {
           <View>
             <Text>LabelColor:</Text>
             <ColorPicker
-              onColorSelected={color => props.labelColorHandler(color)}
+              onColorSelected={color => setLabelColor(color)}
               hideSliders={true}
               style={{width: 125, height: 125}}
             />
@@ -146,7 +145,7 @@ export default function Home(props) {
               keyboardType="numeric"
               style={styles.innerInput}
               value={strokeWidth.toString()}
-              onChangeText={text=>{props.graphStrokeWidthHandler(text)}}  />
+              onChangeText={text=>{setStrokeWidth(text)}}  />
            </View>
            <View style={styles.textInput}>
            <Text 
@@ -156,7 +155,7 @@ export default function Home(props) {
               keyboardType="numeric"
                 style={styles.innerInput} 
                 value={enteredValue.toString()}
-                onChangeText={(text)=>{props.graphOpacityHandler(text.toString())}} 
+                onChangeText={(text)=>{setEnteredValue(text)}} 
                 onSubmitEditing={opacityHandler}
                 />
            </View>

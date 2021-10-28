@@ -35,7 +35,7 @@ export default function List() {
 
         <StackedBarChart
   style={{
-    marginVertical: 8,
+    
     borderRadius: 16,
     backgroundColor: '#ffd700'
   }}

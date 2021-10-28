@@ -48,10 +48,10 @@ export default function Friends () {
         }
       ];
       const chartConfig = {
-        backgroundGradientFrom: "#1E2923",
-        backgroundGradientFromOpacity: 0,
-        backgroundGradientTo: "#08130D",
-        backgroundGradientToOpacity: 0.5,
+        backgroundGradientFrom: "red",
+        backgroundGradientFromOpacity: 1,
+        backgroundGradientTo: "red",
+        backgroundGradientToOpacity: 1,
         color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
         strokeWidth: 2, // optional, default 3
         barPercentage: 0.5,
@@ -64,10 +64,13 @@ export default function Friends () {
         height={220}
         chartConfig={chartConfig}
         accessor={"population"}
-        backgroundColor={"transparent"}
+        backgroundColor='#e6e6fa'
         paddingLeft={"5"}
-       
         absolute
+        style={{
+         
+          borderRadius: 16,
+        }}
       />
     )
 }

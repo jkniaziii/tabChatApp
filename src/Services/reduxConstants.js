@@ -1,0 +1,11 @@
+export const GRADIENT_FROM = 'GRADIENT_FROM';
+export const GRADIENT_TO = 'GRADIENT_TO';
+export const DOT_STROKE = 'DOT_STROKE';
+export const DOT_FILL = 'DOT_FILL';
+export const GRAPH_LINE = 'GRAPH_LINE';
+export const LABEL_COLOR = 'LABEL_COLOR';
+export const STROKE_WIDTH = 'STROKE_WIDTH';
+export const GRAPH_OPACITY = 'GRAPH_OPACITY';
+export const DOT_STROKE_WIDTH = 'DOT_STROKE_WIDTH';
+export const ADD_CHART = 'ADD_CHART';
+export const REMOVE_CHART = 'REMOVE_CHART';

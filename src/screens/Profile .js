@@ -33,6 +33,10 @@ export default function Profile () {
         radius={32}
         chartConfig={chartConfig}
         hideLegend={false}
+        style={{
+         
+          borderRadius: 16,
+        }}
       />
     )
 }
