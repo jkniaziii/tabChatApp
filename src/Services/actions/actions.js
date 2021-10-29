@@ -1,4 +1,4 @@
-import { DOT_FILL, DOT_STROKE_WIDTH, DOT_STROKE, GRADIENT_FROM, GRADIENT_TO, GRAPH_LINE, GRAPH_OPACITY, LABEL_COLOR, ADD_CHART, REMOVE_CHART } from "../reduxConstants"
+import { DOT_FILL, DOT_STROKE_WIDTH, DOT_STROKE, GRADIENT_FROM, GRADIENT_TO, GRAPH_LINE, GRAPH_OPACITY, LABEL_COLOR, ADD_CHART, REMOVE_CHART, EDIT_CHART } from "../reduxConstants"
 
 
 
@@ -65,5 +65,13 @@ export const removeChart = (data) =>{
     return {
         type: REMOVE_CHART,
         data: data,
+    }
+}
+
+export const editChart = (data)=>{
+    console.log('actio_________________________',   data)
+    return{
+        type: EDIT_CHART,
+        data: data
     }
 }

@@ -10,6 +10,7 @@ import { gradientFrom, gradientTo, dotStroke,
 
 const mapStateToProps = state => ({
     data: state.chartItems,
+    chartData: state.chartsArray
   });
 
  

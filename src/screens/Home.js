@@ -52,7 +52,7 @@ export default function Home(props) {
       },
     ],
   };
-  
+  console.log('home--------', props.chartData)
   return (
     <ScrollView>
      
@@ -83,7 +83,7 @@ export default function Home(props) {
         }}
       />
 
-      {props.visible &&
+      {props.data.visible &&
        <View>
         <View>
         <View style={styles.inputPicker}>

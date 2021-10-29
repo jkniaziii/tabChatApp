@@ -18,6 +18,7 @@ import Progress from '../screens/Profile ';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ModalPoup from '../modal/ModalPopup';
 import { connect } from 'react-redux';
+import Item from '@ant-design/react-native/lib/list/ListItem';
 
 
 const DashBoard = (props)=>{
@@ -37,7 +38,7 @@ const DashBoard = (props)=>{
     setVisible(false);
   }
 
- console.log('dashBoard___________', props.removeChartHandler)
+console.log('dashBoard___________', props.addChartHandler)
   return (
     <ScrollView style={styles.container}>
       <View style={styles.btnDash}>
@@ -46,7 +47,7 @@ const DashBoard = (props)=>{
         </View>
         <View style={styles.btnContainer}>
           <Button
-            onPress={()=>props.addChartHandler(<Bezier />)}
+             onPress={()=>props.addChartHandler(<Bezier />)}
             text="Bezier"
             backgroundColor="red"
             iconName="bar-chart"
@@ -72,40 +73,48 @@ const DashBoard = (props)=>{
         </View>
       </View>
       <View>
-        {props.chartData.map((item, index) => {
+       {props.chartData.map((item, index) => {
           return (
             <View key={index}>
               <View style={styles.touchContainer}>
-                <TouchableOpacity onPress={()=>setVisible(true)}>
+                <TouchableOpacity onPress={()=>props.editCHartHandler(true)}>
                   <View style={styles.buttonDlt}>
                     <Text style={styles.btnTxt}>Edit</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => props.removeChartHandler(index)}>
+                <TouchableOpacity onPress={() => props.removeChartHandler(item.id)}>
                   <View style={styles.buttonDlt}>
                     <Text style={styles.btnTxt}>Delete</Text>
                   </View>
                 </TouchableOpacity>
               </View>
-              <View style={{marginVertical: 10}}>{item}</View>
+              <View style={{marginVertical: 10}}>{item.component}</View>
             </View>
           );
-        })}
+        })} 
       </View>
       <ScrollView>
-        <ModalPoup visible={visible}>
+        <ModalPoup visible={props.data.visible}>
           <View style={styles.touchContainer}>
-            <TouchableOpacity onPress={() => setVisible(false)}>
+            <TouchableOpacity onPress={()=>props.editCHartHandler(false)}>
               <View style={styles.buttonEdit}>
                 <Icon name="close-circle" size={20} color="white" />
               </View>
             </TouchableOpacity>
           </View>
+         { props.chartData.map((item, index)=>{
+              
+              return(
+                  <View 
+                  key= {item.id}>{item.component}</View>
+              )
+                // console.log('map___', item.component)
+               
+         }) 
+           
          
-            <Bezier 
-            visible={visible}/>
-       
-        </ModalPoup>
+        }
+        </ModalPoup> 
       </ScrollView>
     </ScrollView>
   );

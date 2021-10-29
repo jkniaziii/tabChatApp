@@ -1,4 +1,4 @@
-import {DOT_FILL, DOT_STROKE, DOT_STROKE_WIDTH, GRADIENT_FROM, GRADIENT_TO, GRAPH_LINE, GRAPH_OPACITY, LABEL_COLOR} from '../reduxConstants';
+import {DOT_FILL, DOT_STROKE, DOT_STROKE_WIDTH, EDIT_CHART, GRADIENT_FROM, GRADIENT_TO, GRAPH_LINE, GRAPH_OPACITY, LABEL_COLOR} from '../reduxConstants';
 
 const initialStyle = {
   backgroundGradientFrom: 'blue',
@@ -9,6 +9,7 @@ const initialStyle = {
   labelColor: 'black',
   dotStrokeWidth: 2,
   graphOpacity: 1,
+  visible: false,
 };
 
 
@@ -32,6 +33,9 @@ const chartItems = (state = initialStyle, action) => {
       return {...state, graphOpacity: Number(action.data)};
     case DOT_STROKE_WIDTH:
       return {...state, dotStrokeWidth: Number(action.data)};
+      case EDIT_CHART:
+        console.log('actio_________________________',   action.data)
+        return {...state, visible: action.data};
 
     default:
       return state;

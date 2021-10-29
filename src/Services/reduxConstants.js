@@ -9,3 +9,4 @@ export const GRAPH_OPACITY = 'GRAPH_OPACITY';
 export const DOT_STROKE_WIDTH = 'DOT_STROKE_WIDTH';
 export const ADD_CHART = 'ADD_CHART';
 export const REMOVE_CHART = 'REMOVE_CHART';
+export const EDIT_CHART = 'EDIT_CHART'
